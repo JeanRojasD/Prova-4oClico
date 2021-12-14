@@ -1,9 +1,12 @@
 package com.br.backend.model;
 
+import com.br.backend.dto.form.FornecedorForm;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CNPJ;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 
 import javax.persistence.*;
 
@@ -19,6 +22,11 @@ public class Fornecedor {
     private Long id;
     private String nome;
     @CNPJ
-    private String CNPJ;
+    private String cnpj;
 
+    public static Fornecedor from(FornecedorForm fornecedorForm) {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        return modelMapper.map(fornecedorForm, Fornecedor.class);
+    }
 }

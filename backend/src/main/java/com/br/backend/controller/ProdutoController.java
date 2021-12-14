@@ -28,7 +28,7 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<ProdutoDTO> create(@RequestBody @Valid ProdutoForm produtoForm){
-        return ResponseEntity.ok(ProdutoService.create(produtoForm));
+        return ResponseEntity.ok(produtoService.create(produtoForm));
     }
 
     @PutMapping("/{id}")

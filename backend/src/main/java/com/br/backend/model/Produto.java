@@ -1,8 +1,11 @@
 package com.br.backend.model;
 
+import com.br.backend.dto.form.ProdutoForm;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 
 import javax.persistence.*;
 
@@ -23,4 +26,10 @@ public class Produto {
     private Double precoVenda;
     private Double precoCompra;
 
+    public static Produto from(ProdutoForm produtoForm) {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        return modelMapper.map(produtoForm, Produto.class);
+    }
 }
