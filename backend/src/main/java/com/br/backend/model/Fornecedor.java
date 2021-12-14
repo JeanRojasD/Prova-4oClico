@@ -22,6 +22,7 @@ public class Fornecedor {
     private Long id;
     private String nome;
     @CNPJ
+    @Column(unique = true)
     private String cnpj;
 
     public static Fornecedor from(FornecedorForm fornecedorForm) {
