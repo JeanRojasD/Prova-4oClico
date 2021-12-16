@@ -35,7 +35,7 @@ const Header = styled.div`
     display: flex;
     flex-direction:row;
     align-items:center;
-
+    color: #9c27b0;
     .img{
         margin-right: 10px;
     }
@@ -46,7 +46,7 @@ const Menu = () => {
         <Container>
             <Header>
                 <Image src={logo} alt="logo" className="img"/>
-                <h3>Jean's Programns</h3>
+                <h3>Jean's Programs</h3>
             </Header>
                 <nav>
                     <ul className='options'>
