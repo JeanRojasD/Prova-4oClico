@@ -53,6 +53,13 @@ const Cadastro = () => {
                     onChange={(_e, newVal) => setObject({ ...object, fornecedor: newVal })}
                     getOptionLabel={option => option.type}
                 />
+                <SelectSearch
+                    label='Tipo de Produto'
+                    from='/tipoProduto'
+                    inputValue={object.tipoProduto.nome}
+                    onChange={(_e, newVal) => setObject({ ...object, tipoProduto: newVal })}
+                    getOptionLabel={option => option.type}
+                />
                 <TextField className="text" id="outlined-basic" required label="Preço de Venda" variant="outlined" onChange={handleChange} type="text" name="precoVenda" value={object.precoVenda || ''} />
                 <TextField className="text" id="outlined-basic" required label="Preço de Compra" variant="outlined" onChange={handleChange} type="text" name="precoCompra" value={object.precoCompra || ''} />
                 <Button className="button" variant="contained" type="submit" color="secondary"> Cadastrar </Button>
