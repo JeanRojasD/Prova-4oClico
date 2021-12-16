@@ -21,6 +21,7 @@ public class ProdutoForm {
     private String nome;
     private FornecedorDTO fornecedor;
     private TipoProdutoDTO tipoProduto;
+    private Integer estoque;
     private Double precoVenda;
     private Double precoCompra;
 

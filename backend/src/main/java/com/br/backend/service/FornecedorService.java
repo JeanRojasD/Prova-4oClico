@@ -36,6 +36,9 @@ public class FornecedorService {
         if(repository.findByNomeContaining(fornecedorForm.getNome()).isPresent()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fornecedor já existente");
         }
+        if(repository.findByCnpjContaining(fornecedorForm.getCnpj()).isPresent()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CNPJ já cadastrado");
+        }
         return FornecedorDTO.from(repository.save(Fornecedor.from(fornecedorForm)));
     }
 

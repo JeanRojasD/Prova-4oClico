@@ -23,6 +23,7 @@ public class Produto {
     private Fornecedor fornecedor;
     @ManyToOne
     private TipoProduto tipoProduto;
+    private Integer estoque;
     private Double precoVenda;
     private Double precoCompra;
 

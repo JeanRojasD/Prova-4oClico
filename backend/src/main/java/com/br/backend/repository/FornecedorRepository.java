@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface FornecedorRepository extends JpaRepository<Fornecedor, Long> {
     Optional<Fornecedor> findByNomeContaining(String nome);
+
+    Optional<Fornecedor> findByCnpjContaining(String cnpj);
 }

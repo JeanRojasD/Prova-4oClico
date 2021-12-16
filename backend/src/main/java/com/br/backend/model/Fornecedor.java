@@ -2,6 +2,7 @@ package com.br.backend.model;
 
 import com.br.backend.dto.form.FornecedorForm;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CNPJ;
@@ -15,6 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "fornecedor")
+@Builder
 public class Fornecedor {
 
     @Id
