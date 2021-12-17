@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 
-import api from '../../api/produto'
+import api from '../../api/fornecedor'
 
 
 const TextInput = styled.div`
@@ -26,7 +26,7 @@ const TextInput = styled.div`
     }
 `
 
-const TableComponent = () => {
+const TableComponentProvider = () => {
 
   const [data, setData] = useState([])
   const [search, setSearch] = useState("")
@@ -55,7 +55,7 @@ const TableComponent = () => {
     <div className="listmap">
       <TextInput>
         <TextField className="text" id="outlined-basic" label="Pesquisar" type="text" variant="outlined" onChange={(event) => { setSearch(event.target.value) }} />
-        <Link to={{ pathname: `/cadastroProduto` }}><Button variant="contained" color="secondary">Cadastrar</Button></Link>
+        <Link to={{ pathname: `/cadastrofornecedor` }}><Button variant="contained" color="secondary">Cadastrar</Button></Link>
       </TextInput>
       <TableContainer className="listmap-container">
         <Table aria-label="a dense table">
@@ -63,37 +63,29 @@ const TableComponent = () => {
             <TableRow className="color">
               <TableCell align="left">Id</TableCell>
               <TableCell align="left">Nome</TableCell>
-              <TableCell align="left">Fornecedor</TableCell>
-              <TableCell align="left">Tipo de Produto</TableCell>
-              <TableCell align="left">Preço Venda</TableCell>
-              <TableCell align="left">Preço Compra</TableCell>
-              <TableCell align="left">Estoque</TableCell>
+              <TableCell align="left">Cnpj</TableCell>
               <TableCell align="center">Editar</TableCell>
               <TableCell align="center">Deletar</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.filter((produto) => {
+            {data.filter((fornecedor) => {
               if (search === "") {
-                return produto
-              } else if (produto.nome.toLowerCase().includes(search.toLowerCase())) {
-                return produto
+                return fornecedor
+              } else if (fornecedor.nome.toLowerCase().includes(search.toLowerCase())) {
+                return fornecedor
               }
-            }).map((produto, key) => {
+            }).map((fornecedor, key) => {
               return (
-                <TableRow key={produto.id}>
-                  <TableCell align="left">{produto.id}</TableCell>
-                  <TableCell align="left">{produto.nome}</TableCell>
-                  <TableCell align="left">{produto.fornecedor.nome}</TableCell>
-                  <TableCell align="left">{produto.tipoProduto.nome}</TableCell>
-                  <TableCell align="left">R$ {produto.precoVenda}</TableCell>
-                  <TableCell align="left">R$ {produto.precoCompra}</TableCell>
-                  <TableCell align="left">{produto.estoque}</TableCell>
+                <TableRow key={fornecedor.id}>
+                  <TableCell align="left" inputProps={{ 'data-testid': 'id' }}>{fornecedor.id}</TableCell>
+                  <TableCell align="left">{fornecedor.nome}</TableCell>
+                  <TableCell align="left">{fornecedor.cnpj}</TableCell>
                   <TableCell align="center">
-                    <Link to={{ pathname: `/editarProduto/${produto.id}` }}><Button variant="contained" color="secondary">Editar</Button></Link>
+                    <Link to={{ pathname: `/editarfornecedor/${fornecedor.id}` }}><Button variant="contained" color="secondary">Editar</Button></Link>
                   </TableCell>
                   <TableCell align="center">
-                    <Button variant="contained" color="error" onClick={() => onDelete(produto.id)}> Delete </Button>
+                    <Button variant="contained" color="error" onClick={() => onDelete(fornecedor.id)}> Delete </Button>
                   </TableCell>
                 </TableRow>
               );
@@ -105,4 +97,4 @@ const TableComponent = () => {
   );
 }
 
-export default TableComponent;
+export default TableComponentProvider;
