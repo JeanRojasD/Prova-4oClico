@@ -44,23 +44,19 @@ const Cadastro = () => {
             <Menu />
             <Form onSubmit={registerSubmit}>
                 <h2>Cadastro de novo Produto</h2>
-                <TextField className="text" id="outlined-basic" required label="Nome" variant="outlined" onChange={handleChange} type="text" name="nome" value={object.nome || ''} inputProps={{ 'data-testid': 'nome' }}/>
+                <TextField className="text" id="outlined-basic" required label="Nome" variant="outlined" onChange={handleChange} type="text" name="nome" value={object.nome || ''} />
                 <TextField className="text" id="outlined-basic" required label="Estoque" variant="outlined" onChange={handleChange} type="text" name="estoque" value={object.estoque || ''} />
                 <SelectSearch
                     label='Fornecedor'
                     from='/fornecedor'
                     inputValue={object.fornecedor.nome}
-                    labelProperty='nome'
-                    onChange={(_e, newVal) => { 
-                        setObject({ ...object, fornecedor: { ...object.fornecedor, nome: newVal.nome } }) 
-                    }}
+                    onChange={(_e, newVal) => setObject({ ...object, fornecedor: newVal })}
                     getOptionLabel={option => option.type}
                 />
                 <SelectSearch
                     label='Tipo de Produto'
                     from='/tipoProduto'
                     inputValue={object.tipoProduto.nome}
-                    labelProperty='nome'
                     onChange={(_e, newVal) => setObject({ ...object, tipoProduto: newVal })}
                     getOptionLabel={option => option.type}
                 />
