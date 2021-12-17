@@ -51,7 +51,7 @@ const Menu = () => {
                 <nav>
                     <ul className='options'>
                         <Link to="/"><li>Produto</li></Link>
-                        <Link to="/"><li>Fornecedor</li></Link>
+                        <Link to="/fornecedor"><li>Fornecedor</li></Link>
                         <Link to="/"><li>Tipo de Produto</li></Link>
                     </ul>
                 </nav>
