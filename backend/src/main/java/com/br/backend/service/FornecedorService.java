@@ -59,5 +59,10 @@ public class FornecedorService {
 
         repository.delete(fornecedor);
     }
-    
+
+    public FornecedorDTO findById(Long id) {
+        return FornecedorDTO.from(repository.findById(id).orElseThrow(() ->{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }));
+    }
 }

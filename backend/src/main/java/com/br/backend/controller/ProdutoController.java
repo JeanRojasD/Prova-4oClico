@@ -26,6 +26,11 @@ public class ProdutoController {
         return ResponseEntity.ok(produtoService.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ProdutoDTO> findById(@PathVariable Long id){
+        return ResponseEntity.ok(produtoService.findById(id));
+    }
+
     @PostMapping
     public ResponseEntity<ProdutoDTO> create(@RequestBody @Valid ProdutoForm produtoForm){
         return ResponseEntity.ok(produtoService.create(produtoForm));

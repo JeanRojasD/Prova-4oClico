@@ -56,5 +56,10 @@ public class ProdutoService {
 
         repository.delete(produto);
     }
-    
+
+    public ProdutoDTO findById(Long id) {
+        return ProdutoDTO.from(repository.findById(id).orElseThrow(() ->{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }));
+    }
 }

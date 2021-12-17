@@ -57,4 +57,9 @@ public class TipoProdutoService {
         repository.delete(tipoProduto);
     }
 
+    public TipoProdutoDTO findById(Long id) {
+        return TipoProdutoDTO.from(repository.findById(id).orElseThrow(() ->{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }));
+    }
 }

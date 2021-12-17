@@ -26,6 +26,11 @@ public class FornecedorController {
         return ResponseEntity.ok(fornecedorService.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<FornecedorDTO> findById(@PathVariable Long id){
+        return ResponseEntity.ok(fornecedorService.findById(id));
+    }
+
     @PostMapping
     public ResponseEntity<FornecedorDTO> create(@RequestBody @Valid FornecedorForm fornecedorForm){
         return ResponseEntity.ok(fornecedorService.create(fornecedorForm));

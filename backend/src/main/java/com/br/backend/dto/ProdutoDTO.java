@@ -1,6 +1,8 @@
 package com.br.backend.dto;
 
+import com.br.backend.model.Fornecedor;
 import com.br.backend.model.Produto;
+import com.br.backend.model.TipoProduto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,8 +16,8 @@ public class ProdutoDTO {
 
     private Long id;
     private String nome;
-    private FornecedorDTO fornecedor;
-    private TipoProdutoDTO tipoProduto;
+    private Fornecedor fornecedor;
+    private TipoProduto tipoProduto;
     private Integer estoque;
     private Double precoVenda;
     private Double precoCompra;
